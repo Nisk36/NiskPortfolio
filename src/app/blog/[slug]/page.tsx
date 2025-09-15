@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { allPosts } from 'contentlayer/generated';
-import MDXRender from '../../../components/MDXRender';
+import MDXClientOnly from '../../../components/MDXClientOnly';
 
 export function generateStaticParams() {
   return allPosts.map((p) => ({ slug: p.slug }));
@@ -12,7 +12,6 @@ export default async function BlogShow({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-
   const post = allPosts.find((p) => p.slug === slug);
   if (!post) return notFound();
 
@@ -23,7 +22,7 @@ export default async function BlogShow({
         {new Date(post.date).toLocaleDateString()}{' '}
         {post.tags?.length ? `・${post.tags.join(', ')}` : ''}
       </p>
-      <MDXRender code={post.body.code} />
+      <MDXClientOnly code={post.body.code} />
     </article>
   );
 }
