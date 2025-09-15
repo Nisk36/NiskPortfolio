@@ -1,16 +1,20 @@
 import { notFound } from 'next/navigation';
 import { allWorks } from 'contentlayer/generated';
-import { useMDXComponent } from 'next-contentlayer/hooks';
+import MDXRender from '../../../components/MDXRender';
 
 export function generateStaticParams() {
   return allWorks.map((w) => ({ slug: w.slug }));
 }
 
-export default function WorkShow({ params }: { params: { slug: string } }) {
-  const work = allWorks.find((w) => w.slug === params.slug);
-  if (!work) return notFound();
+export default async function WorkShow({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
 
-  const MDX = useMDXComponent(work.body.code);
+  const work = allWorks.find((w) => w.slug === slug);
+  if (!work) return notFound();
 
   return (
     <article style={{ padding: 24 }}>
@@ -20,7 +24,7 @@ export default function WorkShow({ params }: { params: { slug: string } }) {
       </p>
       <p style={{ marginTop: 8 }}>{work.summary}</p>
 
-      <MDX />
+      <MDXRender code={work.body.code} />
 
       {work.images?.length ? (
         <section style={{ marginTop: 16 }}>

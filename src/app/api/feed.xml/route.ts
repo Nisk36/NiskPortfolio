@@ -1,5 +1,6 @@
 import { allPosts } from 'contentlayer/generated';
-export const revalidate = 3600;
+
+export const revalidate = 3600; // 1時間キャッシュ
 
 export async function GET() {
   const items = allPosts
@@ -11,6 +12,15 @@ export async function GET() {
         ).toUTCString()}</pubDate></item>`
     )
     .join('');
-  const xml = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Blog</title><link>/</link>${items}</channel></rss>`;
-  return new Response(xml, { headers: { 'Content-Type': 'application/xml; charset=utf-8' } });
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel>
+<title>Blog</title>
+<link>/</link>
+${items}
+</channel></rss>`;
+
+  return new Response(xml, {
+    headers: { 'Content-Type': 'application/xml; charset=utf-8' },
+  });
 }

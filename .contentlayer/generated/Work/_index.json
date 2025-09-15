@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "title": "My First Work",
+    "summary": "最初の作品サンプル。役割や期間、使用技術などを frontmatter で管理。",
+    "role": [
+      "Developer"
+    ],
+    "period": "2025-01 – 2025-03",
+    "stack": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind"
+    ],
+    "images": [],
+    "draft": false,
+    "publishedAt": "2025-09-14T00:00:00.000Z",
+    "body": {
+      "raw": "\n作品の本文。",
+      "code": "var Component=(()=>{var l=Object.create;var o=Object.defineProperty;var u=Object.getOwnPropertyDescriptor;var d=Object.getOwnPropertyNames;var f=Object.getPrototypeOf,x=Object.prototype.hasOwnProperty;var j=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports),_=(t,e)=>{for(var n in e)o(t,n,{get:e[n],enumerable:!0})},a=(t,e,n,i)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let r of d(e))!x.call(t,r)&&r!==n&&o(t,r,{get:()=>e[r],enumerable:!(i=u(e,r))||i.enumerable});return t};var y=(t,e,n)=>(n=t!=null?l(f(t)):{},a(e||!t||!t.__esModule?o(n,\"default\",{value:t,enumerable:!0}):n,t)),M=t=>a(o({},\"__esModule\",{value:!0}),t);var m=j((w,c)=>{c.exports=_jsx_runtime});var D={};_(D,{default:()=>h,frontmatter:()=>b});var s=y(m()),b={title:\"My First Work\",summary:\"\\u6700\\u521D\\u306E\\u4F5C\\u54C1\\u30B5\\u30F3\\u30D7\\u30EB\\u3002\\u5F79\\u5272\\u3084\\u671F\\u9593\\u3001\\u4F7F\\u7528\\u6280\\u8853\\u306A\\u3069\\u3092 frontmatter \\u3067\\u7BA1\\u7406\\u3002\",role:[\"Developer\"],period:\"2025-01 \\u2013 2025-03\",stack:[\"Next.js\",\"TypeScript\",\"Tailwind\"],images:[],draft:!1,publishedAt:\"2025-09-14\"};function p(t){let e=Object.assign({p:\"p\"},t.components);return(0,s.jsx)(e.p,{children:\"\\u4F5C\\u54C1\\u306E\\u672C\\u6587\\u3002\"})}function g(t={}){let{wrapper:e}=t.components||{};return e?(0,s.jsx)(e,Object.assign({},t,{children:(0,s.jsx)(p,t)})):p(t)}var h=g;return M(D);})();\n;return Component;"
+    },
+    "_id": "works/first-work.mdx",
+    "_raw": {
+      "sourceFilePath": "works/first-work.mdx",
+      "sourceFileName": "first-work.mdx",
+      "sourceFileDir": "works",
+      "contentType": "mdx",
+      "flattenedPath": "works/first-work"
+    },
+    "type": "Work",
+    "slug": "first-work"
+  }
+]
