@@ -1,6 +1,6 @@
 // Generate static RSS feed into public/feed.xml for GitHub Pages
 // Runs after `next build` so Contentlayer has generated `.contentlayer/generated/index.mjs`
-import { writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
@@ -8,9 +8,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 async function run() {
-  const genPath = resolve(__dirname, '..', '.contentlayer', 'generated', 'index.mjs');
-  const mod = await import(`file://${genPath}`);
-  const allPosts = mod.allPosts ?? [];
+  const postsIndexPath = resolve(__dirname, '..', '.contentlayer', 'generated', 'Post', '_index.json');
+  const allPosts = JSON.parse(readFileSync(postsIndexPath, 'utf8'));
 
   const items = allPosts
     .filter((p) => !p.draft)
@@ -53,4 +52,3 @@ run().catch((err) => {
   console.error(err);
   process.exit(1);
 });
-
