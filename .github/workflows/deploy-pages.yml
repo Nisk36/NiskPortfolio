@@ -63,7 +63,7 @@ jobs:
             echo "base_url=https://${GITHUB_REPOSITORY%/*}.github.io/${REPO_NAME}" >> $GITHUB_OUTPUT
           fi
 
-      - name: Build and Export
+      - name: Build
         env:
           # Next.js basePath/assetPrefix
           BASE_PATH: ${{ steps.detect.outputs.base_path }}
@@ -72,7 +72,6 @@ jobs:
         run: |
           pnpm build
           pnpm preexport
-          pnpm export
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
