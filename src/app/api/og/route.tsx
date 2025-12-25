@@ -1,10 +1,9 @@
 import { ImageResponse } from 'next/og';
 export const runtime = 'edge';
+export const dynamic = 'force-static';
 
-export async function GET(req: Request) {
-  const { searchParams } = new URL(req.url);
-  const title = searchParams.get('title') ?? 'My Portfolio';
-
+export async function GET() {
+  const title = 'My Portfolio';
   return new ImageResponse(
     (
       <div
