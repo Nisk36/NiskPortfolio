@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { allPosts } from 'contentlayer/generated';
-import MDXClientOnly from '../../../components/MDXClientOnly';
+import MDXRender from '../../../components/MDXRender';
 
 export function generateStaticParams() {
   return allPosts.map((p) => ({ slug: p.slug }));
@@ -22,7 +22,7 @@ export default async function BlogShow({
         {new Date(post.date).toLocaleDateString()}{' '}
         {post.tags?.length ? `・${post.tags.join(', ')}` : ''}
       </p>
-      <MDXClientOnly code={post.body.code} />
+      <MDXRender code={post.body.code} />
     </article>
   );
 }

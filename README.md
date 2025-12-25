@@ -34,3 +34,13 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## GitHub Pages
+
+This repo is configured to deploy to GitHub Pages using static export.
+
+- Build & export: `pnpm build && pnpm preexport && pnpm export` (outputs to `out/`)
+- Workflow: `.github/workflows/deploy-pages.yml` automatically builds and deploys on push to `main`/`master`.
+- Base path: the workflow auto-detects if the repo is `<user>.github.io` (root) or a project page and sets `BASE_PATH` accordingly.
+- RSS: `scripts/generate-feed.mjs` writes `public/feed.xml` at build time.
+- Note: API routes like `/api/og` are not available on GitHub Pages (static hosting).

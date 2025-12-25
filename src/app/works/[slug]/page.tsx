@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { allWorks } from 'contentlayer/generated';
-import MDXClientOnly from '../../../components/MDXClientOnly';
+import MDXRender from '../../../components/MDXRender';
 
 export function generateStaticParams() {
   return allWorks.map((w) => ({ slug: w.slug }));
@@ -23,7 +23,7 @@ export default async function WorkShow({
       </p>
       <p style={{ marginTop: 8 }}>{work.summary}</p>
 
-      <MDXClientOnly code={work.body.code} />
+      <MDXRender code={work.body.code} />
     </article>
   );
 }
