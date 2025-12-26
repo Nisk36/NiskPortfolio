@@ -24,7 +24,7 @@ const Home = () => {
           </div>
           <div className="flex flex-wrap gap-3">
             <Link
-              className="surface hover-pixel px-4 py-2 text-sm font-medium no-underline"
+              className="surface pixel-frame px-4 py-2 text-sm font-medium no-underline"
               href="/blog"
             >
               Blogを読む
@@ -47,7 +47,7 @@ const Home = () => {
               <Link
                 key={post._id}
                 href={`/blog/${post.slug}`}
-                className="surface hover-pixel flex h-full flex-col gap-3 p-4 no-underline"
+                className="surface pixel-frame flex h-full flex-col gap-3 p-4 no-underline"
               >
                 <div className="space-y-2">
                   <p className="text-xs text-[var(--muted)]">

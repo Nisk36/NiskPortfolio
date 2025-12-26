@@ -20,19 +20,19 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0e1116;
-    --surface: #121722;
-    --text: #e6edf3;
-    --muted: #98a6c3;
-    --line: #283041;
-    --accent: #f14a3b;
-    --ok: #2ac3a2;
-    --code: #12151b;
-    --quote: #161c24;
-    --selection: #2a3646;
-  }
+:root[data-theme="dark"],
+[data-theme="dark"],
+.dark {
+  --bg: #0e1116;
+  --surface: #121722;
+  --text: #e6edf3;
+  --muted: #98a6c3;
+  --line: #283041;
+  --accent: #f14a3b;
+  --ok: #2ac3a2;
+  --code: #12151b;
+  --quote: #161c24;
+  --selection: #2a3646;
 }
 
 body {
@@ -45,15 +45,19 @@ body {
   background: var(--selection);
 }
 
-a {
+:where(a) {
   color: var(--accent);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
 
-a:hover {
+:where(a:hover) {
   text-decoration-thickness: 2px;
+}
+
+:where(button, .button, .btn) {
+  color: var(--accent);
 }
 
 code {
@@ -116,15 +120,15 @@ blockquote {
 
 .surface {
   background: var(--surface);
-  border: 1px solid var(--line);
   border-radius: 1rem;
 }
 
-.hover-pixel {
+.pixel-frame {
+  border: 1px solid var(--line);
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-.hover-pixel:hover {
+.pixel-frame:hover {
   box-shadow: 1px 1px 0 0 var(--line);
   transform: translate(-1px, -1px);
 }
