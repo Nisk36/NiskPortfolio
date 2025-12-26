@@ -55,44 +55,54 @@ const RootLayout = ({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header className="border-b">
-          <nav className="mx-auto flex max-w-5xl gap-6 px-6 py-4 text-sm font-medium">
-            <Link href="/">Home</Link>
-            <Link href="/blog">Blog</Link>
-            <Link href="/works">Works</Link>
-            <Link href="#contact">Contact</Link>
-          </nav>
-        </header>
-        {children}
-        <footer id="contact" className="mt-16 border-t bg-muted/20">
-          <div className="mx-auto flex max-w-5xl flex-col gap-4 px-6 py-10 text-sm">
-            <div>
-              <h2 className="text-base font-semibold">Contact</h2>
-              <p className="mt-1 text-muted-foreground">
-                お問い合わせは以下の連絡先からお願いします（仮置きです）。
-              </p>
-            </div>
-            <div className="flex flex-col gap-2 text-muted-foreground">
-              <span>
-                Mail:{" "}
-                <a className="underline" href="mailto:contact@example.com">
-                  contact@example.com
-                </a>
-              </span>
-              <span>
-                SNS:{" "}
-                <a
-                  className="underline"
-                  href="https://sns.example.com/placeholder"
-                  target="_blank"
-                  rel="noreferrer"
+        <div className="min-h-screen flex flex-col">
+          <header className="border-b border-[var(--line)]">
+            <div className="container flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:justify-between">
+              <Link href="/" className="text-lg font-semibold no-underline">
+                Nisk Portfolio
+              </Link>
+              <nav className="flex flex-wrap gap-4 text-sm text-[var(--muted)]">
+                <Link href="/" className="hover:text-[var(--text)] no-underline">
+                  Home
+                </Link>
+                <Link
+                  href="/blog"
+                  className="hover:text-[var(--text)] no-underline"
                 >
-                  https://sns.example.com/placeholder
+                  Blog
+                </Link>
+                <Link
+                  href="/works"
+                  className="hover:text-[var(--text)] no-underline"
+                >
+                  Works
+                </Link>
+                <a
+                  href="#contact"
+                  className="hover:text-[var(--text)] no-underline"
+                >
+                  Contact
                 </a>
-              </span>
+              </nav>
             </div>
-          </div>
-        </footer>
+          </header>
+          <div className="flex-1">{children}</div>
+          <footer id="contact" className="border-t border-[var(--line)]">
+            <div className="container py-10">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p className="text-sm text-[var(--muted)]">Contact</p>
+                  <p className="text-base font-medium">Get in touch</p>
+                </div>
+                <div className="flex flex-wrap gap-4 text-sm">
+                  <a href="mailto:hello@example.com">hello@example.com</a>
+                  <a href="https://github.com/">GitHub</a>
+                  <a href="https://x.com/">X (Twitter)</a>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
       </body>
     </html>
   );

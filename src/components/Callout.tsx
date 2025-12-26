@@ -1,6 +1,6 @@
 const Callout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div style={{ border: '1px solid currentColor', padding: 12, borderRadius: 8, opacity: 0.9 }}>
+    <div className="surface hover-pixel p-4 text-sm text-[var(--muted)]">
       {children}
     </div>
   );

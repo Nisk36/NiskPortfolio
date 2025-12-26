@@ -1,9 +1,9 @@
-import { notFound } from 'next/navigation';
-import { allPosts } from 'contentlayer/generated';
-import MDXRender from '../../../components/MDXRender';
+import { notFound } from "next/navigation";
+import { allPosts } from "contentlayer/generated";
+import MDXRender from "../../../components/MDXRender";
 
 export function generateStaticParams() {
-  return allPosts.map((p) => ({ slug: p.slug }));
+  return allPosts.map((post) => ({ slug: post.slug }));
 }
 
 const BlogShow = async ({
@@ -12,18 +12,27 @@ const BlogShow = async ({
   params: Promise<{ slug: string }>;
 }) => {
   const { slug } = await params;
-  const post = allPosts.find((p) => p.slug === slug);
+  const post = allPosts.find((item) => item.slug === slug);
   if (!post) return notFound();
 
   return (
-    <article style={{ padding: 24 }}>
-      <h1>{post.title}</h1>
-      <p style={{ opacity: 0.7, marginTop: -8 }}>
-        {new Date(post.date).toLocaleDateString()}{' '}
-        {post.tags?.length ? `・${post.tags.join(', ')}` : ''}
-      </p>
-      <MDXRender code={post.body.code} />
-    </article>
+    <div className="container py-12">
+      <article className="space-y-6">
+        <header className="space-y-2">
+          <p className="text-xs text-[var(--muted)]">
+            {new Date(post.date).toLocaleDateString()}
+            {post.tags?.length ? ` ・ ${post.tags.join(" / ")}` : ""}
+          </p>
+          <h1 className="text-3xl font-semibold">{post.title}</h1>
+          {post.summary ? (
+            <p className="text-base text-[var(--muted)]">{post.summary}</p>
+          ) : null}
+        </header>
+        <div className="content text-[var(--text)]">
+          <MDXRender code={post.body.code} />
+        </div>
+      </article>
+    </div>
   );
 };
 

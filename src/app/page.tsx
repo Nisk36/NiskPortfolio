@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import { allPosts } from 'contentlayer/generated';
+import Link from "next/link";
+import { allPosts } from "contentlayer/generated";
 
 const Home = () => {
   const posts = [...allPosts]
@@ -8,67 +8,64 @@ const Home = () => {
     .slice(0, 3);
 
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col gap-16 px-6 py-16 sm:px-10">
-      <section className="flex flex-col gap-6">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">Example</p>
-        <div className="flex flex-col gap-4">
-          <h1 className="text-3xl font-semibold leading-tight text-neutral-900 sm:text-5xl">
-            Example Example Example
-          </h1>
-          <p className="max-w-2xl text-base leading-relaxed text-neutral-600 sm:text-lg">
-            Example Example Example Example Example.
+    <div className="container py-16">
+      <main className="flex flex-col gap-12">
+        <section className="flex flex-col gap-6">
+          <p className="text-sm uppercase tracking-[0.3em] text-[var(--muted)]">
+            Portfolio
           </p>
-        </div>
-      </section>
-
-      <section className="flex flex-col gap-6">
-        <div className="flex items-center justify-between gap-4">
-          <h2 className="text-xl font-semibold text-neutral-900 sm:text-2xl">Example</h2>
-          <Link className="text-sm font-medium text-neutral-600 hover:text-neutral-900" href="/blog">
-            Example
-          </Link>
-        </div>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {posts.map((post) => (
-            <article
-              key={post._id}
-              className="flex flex-col gap-3 rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm"
+          <div className="space-y-4">
+            <h1 className="text-3xl font-semibold leading-tight sm:text-4xl">
+              伝わる体験を設計し、プロダクトとブランドの関係性を磨きます。
+            </h1>
+            <p className="max-w-2xl text-base text-[var(--muted)]">
+              UX設計・コンテンツ設計・情報設計を軸に、読みやすく、行動につながる体験づくりを支援しています。
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              className="surface hover-pixel px-4 py-2 text-sm font-medium no-underline"
+              href="/blog"
             >
-              <div className="text-xs font-medium uppercase tracking-[0.15em] text-neutral-400">
-                {new Date(post.date).toLocaleDateString('ja-JP')}
-              </div>
-              <h3 className="text-lg font-semibold text-neutral-900">
-                <Link className="hover:text-neutral-700" href={`/blog/${post.slug}`}>
-                  {post.title}
-                </Link>
-              </h3>
-              <p className="text-sm leading-relaxed text-neutral-600">{post.summary}</p>
-            </article>
-          ))}
-        </div>
-      </section>
+              Blogを読む
+            </Link>
+            <a className="px-4 py-2 text-sm font-medium" href="#contact">
+              Contact
+            </a>
+          </div>
+        </section>
 
-      <section className="flex flex-col gap-4 rounded-3xl border border-neutral-200 bg-neutral-50 p-6 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <h2 className="text-xl font-semibold text-neutral-900">Example Example</h2>
-          <p className="mt-2 text-sm text-neutral-600">Example Example Example Example.</p>
-        </div>
-        <div className="flex flex-col gap-3 sm:flex-row">
-          <Link
-            className="inline-flex items-center justify-center rounded-full bg-neutral-900 px-5 py-2 text-sm font-semibold text-white transition hover:bg-neutral-700"
-            href="/blog"
-          >
-            Example Blog
-          </Link>
-          <Link
-            className="inline-flex items-center justify-center rounded-full border border-neutral-300 px-5 py-2 text-sm font-semibold text-neutral-700 transition hover:border-neutral-400 hover:text-neutral-900"
-            href="/contact"
-          >
-            Example Contact
-          </Link>
-        </div>
-      </section>
-    </main>
+        <section className="space-y-6">
+          <div className="flex items-center justify-between">
+            <h2 className="text-xl font-semibold">Latest Blog</h2>
+            <Link href="/blog" className="text-sm">
+              すべて見る
+            </Link>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {posts.map((post) => (
+              <Link
+                key={post._id}
+                href={`/blog/${post.slug}`}
+                className="surface hover-pixel flex h-full flex-col gap-3 p-4 no-underline"
+              >
+                <div className="space-y-2">
+                  <p className="text-xs text-[var(--muted)]">
+                    {new Date(post.date).toLocaleDateString()}
+                  </p>
+                  <h3 className="text-base font-semibold text-[var(--text)]">
+                    {post.title}
+                  </h3>
+                </div>
+                <p className="text-sm text-[var(--muted)]">
+                  {post.description ?? post.summary ?? "続きを読む"}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </section>
+      </main>
+    </div>
   );
 };
 
