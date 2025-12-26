@@ -61,26 +61,17 @@ const RootLayout = ({
               <Link href="/" className="text-lg font-semibold no-underline">
                 Nisk Portfolio
               </Link>
-              <nav className="flex flex-wrap gap-4 text-sm text-[var(--muted)]">
-                <Link href="/" className="hover:text-[var(--text)] no-underline">
+              <nav className="flex flex-wrap gap-4 text-sm">
+                <Link href="/" className="no-underline">
                   Home
                 </Link>
-                <Link
-                  href="/blog"
-                  className="hover:text-[var(--text)] no-underline"
-                >
+                <Link href="/blog" className="no-underline">
                   Blog
                 </Link>
-                <Link
-                  href="/works"
-                  className="hover:text-[var(--text)] no-underline"
-                >
+                <Link href="/works" className="no-underline">
                   Works
                 </Link>
-                <a
-                  href="#contact"
-                  className="hover:text-[var(--text)] no-underline"
-                >
+                <a href="#contact" className="no-underline">
                   Contact
                 </a>
               </nav>
