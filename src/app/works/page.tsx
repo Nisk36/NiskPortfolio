@@ -9,6 +9,9 @@ const WorksIndex = () => {
   return (
     <main style={{ padding: 24 }}>
       <h1>Works</h1>
+      <p style={{ opacity: 0.8, marginTop: 8 }}>
+        準備中。今後追加予定です。
+      </p>
       <ul>
         {works.map((w) => (
           <li key={w._id}>
