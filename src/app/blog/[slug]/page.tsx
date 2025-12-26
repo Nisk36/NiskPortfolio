@@ -6,11 +6,11 @@ export function generateStaticParams() {
   return allPosts.map((p) => ({ slug: p.slug }));
 }
 
-export default async function BlogShow({
+const BlogShow = async ({
   params,
 }: {
   params: Promise<{ slug: string }>;
-}) {
+}) => {
   const { slug } = await params;
   const post = allPosts.find((p) => p.slug === slug);
   if (!post) return notFound();
@@ -25,4 +25,6 @@ export default async function BlogShow({
       <MDXRender code={post.body.code} />
     </article>
   );
-}
+};
+
+export default BlogShow;

@@ -6,11 +6,11 @@ export function generateStaticParams() {
   return allWorks.map((w) => ({ slug: w.slug }));
 }
 
-export default async function WorkShow({
+const WorkShow = async ({
   params,
 }: {
   params: Promise<{ slug: string }>;
-}) {
+}) => {
   const { slug } = await params;
   const work = allWorks.find((w) => w.slug === slug);
   if (!work) return notFound();
@@ -26,4 +26,6 @@ export default async function WorkShow({
       <MDXRender code={work.body.code} />
     </article>
   );
-}
+};
+
+export default WorkShow;
