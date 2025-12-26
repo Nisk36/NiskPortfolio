@@ -64,6 +64,35 @@ const RootLayout = ({
           </nav>
         </header>
         {children}
+        <footer id="contact" className="mt-16 border-t bg-muted/20">
+          <div className="mx-auto flex max-w-5xl flex-col gap-4 px-6 py-10 text-sm">
+            <div>
+              <h2 className="text-base font-semibold">Contact</h2>
+              <p className="mt-1 text-muted-foreground">
+                お問い合わせは以下の連絡先からお願いします（仮置きです）。
+              </p>
+            </div>
+            <div className="flex flex-col gap-2 text-muted-foreground">
+              <span>
+                Mail:{" "}
+                <a className="underline" href="mailto:contact@example.com">
+                  contact@example.com
+                </a>
+              </span>
+              <span>
+                SNS:{" "}
+                <a
+                  className="underline"
+                  href="https://sns.example.com/placeholder"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  https://sns.example.com/placeholder
+                </a>
+              </span>
+            </div>
+          </div>
+        </footer>
       </body>
     </html>
   );
