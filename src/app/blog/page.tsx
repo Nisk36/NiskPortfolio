@@ -32,7 +32,7 @@ const BlogIndex = () => {
                 {post.title}
               </h2>
               <p className="text-sm text-[var(--muted)]">
-                {post.description ?? post.summary ?? "続きを読む"}
+                {post.summary ?? "続きを読む"}
               </p>
             </Link>
           ))}
