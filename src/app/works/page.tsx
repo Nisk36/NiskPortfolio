@@ -20,7 +20,7 @@ const WorksIndex = () => {
             <Link
               key={work._id}
               href={`/works/${work.slug}`}
-              className="surface hover-pixel flex flex-col gap-2 p-4 no-underline"
+              className="surface pixel-frame flex flex-col gap-2 p-4 no-underline"
             >
               <div className="flex flex-wrap items-center gap-3 text-xs text-[var(--muted)]">
                 <span>{work.period}</span>
