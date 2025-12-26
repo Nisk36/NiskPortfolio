@@ -46,7 +46,8 @@ section {
 }
 
 ::selection {
-  background: var(--selection);
+  background-color: var(--selection);
+  color: var(--text);
 }
 
 a {
@@ -97,21 +98,26 @@ blockquote {
 }
 
 .content > * + * {
-  margin-top: 1rem;
+  margin-top: 1.25rem;
 }
 
 .content p {
   color: var(--text);
+  line-height: 1.75;
 }
 
 .content h2 {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 600;
+  line-height: 1.35;
+  margin-top: 2.25rem;
 }
 
 .content h3 {
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   font-weight: 600;
+  line-height: 1.4;
+  margin-top: 1.75rem;
 }
 
 .content ul {
@@ -126,6 +132,20 @@ blockquote {
 
 .content li {
   color: var(--text);
+  line-height: 1.7;
+}
+
+.tag-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--ok) 60%, transparent);
+  color: var(--ok);
+  background: color-mix(in srgb, var(--ok) 12%, transparent);
+  font-size: 0.7rem;
+  letter-spacing: 0.01em;
 }
 
 .container {
