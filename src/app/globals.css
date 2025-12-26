@@ -41,6 +41,10 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
+section {
+  background: var(--bg);
+}
+
 ::selection {
   background: var(--selection);
 }
@@ -94,6 +98,10 @@ blockquote {
 
 .content > * + * {
   margin-top: 1rem;
+}
+
+.content p {
+  color: var(--text);
 }
 
 .content h2 {
