@@ -25,7 +25,13 @@ const BlogIndex = () => {
               <div className="flex flex-wrap items-center gap-3 text-xs text-[var(--muted)]">
                 <span>{new Date(post.date).toLocaleDateString()}</span>
                 {post.tags?.length ? (
-                  <span>{post.tags.join(" / ")}</span>
+                  <div className="flex flex-wrap gap-2">
+                    {post.tags.map((tag) => (
+                      <span key={tag} className="tag-badge">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 ) : null}
               </div>
               <h2 className="text-lg font-semibold text-[var(--text)]">

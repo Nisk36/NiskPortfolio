@@ -18,11 +18,19 @@ const BlogShow = async ({
   return (
     <div className="container py-12">
       <article className="space-y-6">
-        <header className="space-y-2">
-          <p className="text-xs text-[var(--muted)]">
-            {new Date(post.date).toLocaleDateString()}
-            {post.tags?.length ? ` ・ ${post.tags.join(" / ")}` : ""}
-          </p>
+        <header className="space-y-3">
+          <div className="flex flex-wrap items-center gap-3 text-xs text-[var(--muted)]">
+            <span>{new Date(post.date).toLocaleDateString()}</span>
+            {post.tags?.length ? (
+              <div className="flex flex-wrap gap-2">
+                {post.tags.map((tag) => (
+                  <span key={tag} className="tag-badge">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            ) : null}
+          </div>
           <h1 className="text-3xl font-semibold">{post.title}</h1>
           {post.summary ? (
             <p className="text-base text-[var(--muted)]">{post.summary}</p>
