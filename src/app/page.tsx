@@ -58,7 +58,7 @@ const Home = () => {
                   </h3>
                 </div>
                 <p className="text-sm text-[var(--muted)]">
-                  {post.description ?? post.summary ?? "続きを読む"}
+                  {post.summary ?? "続きを読む"}
                 </p>
               </Link>
             ))}
