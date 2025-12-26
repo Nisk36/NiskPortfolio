@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { allPosts } from 'contentlayer/generated';
 
-export default function BlogIndex() {
+const BlogIndex = () => {
   const posts = [...allPosts]
     .filter((p) => !p.draft)
     .sort((a, b) => +new Date(b.date) - +new Date(a.date));
@@ -19,4 +19,6 @@ export default function BlogIndex() {
       </ul>
     </main>
   );
-}
+};
+
+export default BlogIndex;

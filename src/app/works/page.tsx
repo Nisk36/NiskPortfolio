@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { allWorks } from 'contentlayer/generated';
 
-export default function WorksIndex() {
+const WorksIndex = () => {
   const works = [...allWorks]
     .filter((w) => !w.draft)
     .sort((a, b) => +new Date(b.publishedAt) - +new Date(a.publishedAt));
@@ -19,4 +19,6 @@ export default function WorksIndex() {
       </ul>
     </main>
   );
-}
+};
+
+export default WorksIndex;
