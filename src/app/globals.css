@@ -62,6 +62,10 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
+html {
+  background: var(--bg);
+}
+
 section {
   background: var(--bg);
 }
