@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
+import ThemeToggle from "../components/ThemeToggle";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -75,6 +76,7 @@ const RootLayout = ({
                   Contact
                 </a>
               </nav>
+              <ThemeToggle />
             </div>
           </header>
           <div className="flex-1">{children}</div>
