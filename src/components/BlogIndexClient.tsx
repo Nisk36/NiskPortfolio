@@ -57,7 +57,7 @@ const BlogIndexClient = ({ posts }: BlogIndexClientProps) => {
             onClick={() => setActiveTag(null)}
             className={`rounded-full border px-3 py-1 text-xs transition ${
               activeTag === null
-                ? "border-[var(--accent)] bg-[var(--accent)] text-[var(--background)]"
+                ? "border-[var(--accent)] text-[var(--accent)]"
                 : "border-[var(--line)] text-[var(--muted)] hover:border-[var(--accent)] hover:text-[var(--text)]"
             }`}
           >
@@ -70,7 +70,7 @@ const BlogIndexClient = ({ posts }: BlogIndexClientProps) => {
               onClick={() => setActiveTag(tag)}
               className={`rounded-full border px-3 py-1 text-xs transition ${
                 activeTag === tag
-                  ? "border-[var(--accent)] bg-[var(--accent)] text-[var(--background)]"
+                  ? "border-[var(--accent)] text-[var(--accent)]"
                   : "border-[var(--line)] text-[var(--muted)] hover:border-[var(--accent)] hover:text-[var(--text)]"
               }`}
             >
