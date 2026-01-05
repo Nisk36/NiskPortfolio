@@ -61,8 +61,7 @@ const ThemeToggle = () => {
       <img
         src="/icons/night-mode.svg"
         alt=""
-        className="h-5 w-5 text-[var(--text)]"
-        style={{ filter: theme === "dark" ? "invert(1)" : "none" }}
+        className="h-5 w-5"
       />
       <span className="sr-only">
         {theme === "light" ? "Dark" : "Light"} Mode
