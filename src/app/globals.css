@@ -2,8 +2,8 @@
 
 @font-face {
   font-family: "M PLUS 1 Code Nerd Font";
-  src: url("https://cdn.jsdelivr.net/gh/ryanoasis/nerd-fonts@master/patched-fonts/MPlus/MPlus1Code/Regular/complete/MPlus1CodeNerdFont-Regular.ttf")
-    format("truetype");
+  src: local("M PLUS 1 Code Nerd Font"),
+    url("/fonts/M+1CodeNerdFont-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -11,8 +11,9 @@
 
 @font-face {
   font-family: "M PLUS 1 Code Nerd Font";
-  src: url("https://cdn.jsdelivr.net/gh/ryanoasis/nerd-fonts@master/patched-fonts/MPlus/MPlus1Code/Bold/complete/MPlus1CodeNerdFont-Bold.ttf")
-    format("truetype");
+  src: local("M PLUS 1 Code Nerd Font Bold"),
+    local("M PLUS 1 Code Nerd Font"),
+    url("/fonts/M+1CodeNerdFont-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
