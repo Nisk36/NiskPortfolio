@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { Post } from "contentlayer/generated";
 
 type BlogIndexClientProps = {
@@ -10,6 +10,8 @@ type BlogIndexClientProps = {
 
 const BlogIndexClient = ({ posts }: BlogIndexClientProps) => {
   const [activeTag, setActiveTag] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 6;
 
   const tags = useMemo(() => {
     const uniqueTags = new Set<string>();
@@ -19,10 +21,29 @@ const BlogIndexClient = ({ posts }: BlogIndexClientProps) => {
     return Array.from(uniqueTags).sort((a, b) => a.localeCompare(b, "ja"));
   }, [posts]);
 
-  const visiblePosts = useMemo(() => {
+  const filteredPosts = useMemo(() => {
     if (!activeTag) return posts;
     return posts.filter((post) => post.tags?.includes(activeTag));
   }, [activeTag, posts]);
+
+  const totalPages = useMemo(() => {
+    return Math.max(1, Math.ceil(filteredPosts.length / pageSize));
+  }, [filteredPosts.length, pageSize]);
+
+  const visiblePosts = useMemo(() => {
+    const startIndex = (currentPage - 1) * pageSize;
+    return filteredPosts.slice(startIndex, startIndex + pageSize);
+  }, [currentPage, filteredPosts, pageSize]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeTag]);
+
+  useEffect(() => {
+    if (currentPage > totalPages) {
+      setCurrentPage(totalPages);
+    }
+  }, [currentPage, totalPages]);
 
   return (
     <div className="space-y-6">
@@ -36,8 +57,8 @@ const BlogIndexClient = ({ posts }: BlogIndexClientProps) => {
             onClick={() => setActiveTag(null)}
             className={`rounded-full border px-3 py-1 text-xs transition ${
               activeTag === null
-                ? "border-[var(--ok)] bg-[var(--ok)] text-[var(--background)]"
-                : "border-[var(--line)] text-[var(--muted)] hover:border-[var(--ok)] hover:text-[var(--text)]"
+                ? "border-[var(--accent)] text-[var(--accent)]"
+                : "border-[var(--line)] text-[var(--muted)] hover:border-[var(--accent)] hover:text-[var(--text)]"
             }`}
           >
             すべて
@@ -49,8 +70,8 @@ const BlogIndexClient = ({ posts }: BlogIndexClientProps) => {
               onClick={() => setActiveTag(tag)}
               className={`rounded-full border px-3 py-1 text-xs transition ${
                 activeTag === tag
-                  ? "border-[var(--ok)] bg-[var(--ok)] text-[var(--background)]"
-                  : "border-[var(--line)] text-[var(--muted)] hover:border-[var(--ok)] hover:text-[var(--text)]"
+                  ? "border-[var(--accent)] text-[var(--accent)]"
+                  : "border-[var(--line)] text-[var(--muted)] hover:border-[var(--accent)] hover:text-[var(--text)]"
               }`}
             >
               {tag}
@@ -91,6 +112,28 @@ const BlogIndexClient = ({ posts }: BlogIndexClientProps) => {
           </div>
         ) : null}
       </div>
+      {totalPages > 1 ? (
+        <div className="flex flex-wrap items-center gap-2">
+          {Array.from({ length: totalPages }, (_, index) => {
+            const pageNumber = index + 1;
+            const isActive = pageNumber === currentPage;
+            return (
+              <button
+                key={pageNumber}
+                type="button"
+                onClick={() => setCurrentPage(pageNumber)}
+                className={`flex h-9 w-9 items-center justify-center rounded-full border text-xs transition ${
+                  isActive
+                    ? "border-[var(--accent)] bg-[var(--accent)] text-[var(--background)]"
+                    : "border-[var(--line)] text-[var(--muted)] hover:border-[var(--accent)] hover:text-[var(--text)]"
+                }`}
+              >
+                {pageNumber}
+              </button>
+            );
+          })}
+        </div>
+      ) : null}
     </div>
   );
 };

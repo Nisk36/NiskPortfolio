@@ -3,7 +3,7 @@
 @font-face {
   font-family: "M PLUS 1 Code Nerd Font";
   src: local("M PLUS 1 Code Nerd Font"),
-    url("/fonts/MPlus1CodeNerdFont-Regular.ttf") format("truetype");
+    url("/fonts/M+1CodeNerdFont-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -13,7 +13,7 @@
   font-family: "M PLUS 1 Code Nerd Font";
   src: local("M PLUS 1 Code Nerd Font Bold"),
     local("M PLUS 1 Code Nerd Font"),
-    url("/fonts/MPlus1CodeNerdFont-Bold.ttf") format("truetype");
+    url("/fonts/M+1CodeNerdFont-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -162,9 +162,9 @@ blockquote {
   gap: 0.25rem;
   padding: 0.1rem 0.5rem;
   border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--ok) 60%, transparent);
-  color: var(--ok);
-  background: color-mix(in srgb, var(--ok) 12%, transparent);
+  border: 1px solid var(--line);
+  color: var(--text);
+  background: color-mix(in srgb, var(--line) 25%, transparent);
   font-size: 0.7rem;
   letter-spacing: 0.01em;
 }
