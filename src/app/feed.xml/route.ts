@@ -2,12 +2,24 @@ import { allPosts } from 'contentlayer/generated';
 
 export const revalidate = 3600; // 1時間キャッシュ
 
+const baseUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
+
+const escapeXml = (value: string) =>
+  value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+
 export async function GET() {
   const items = allPosts
     .filter((p) => !p.draft)
     .map(
       (p) =>
-        `<item><title>${p.title}</title><link>/blog/${p.slug}</link><pubDate>${new Date(
+        `<item><title>${escapeXml(p.title)}</title><link>${baseUrl}/blog/${p.slug}</link><pubDate>${new Date(
           p.date
         ).toUTCString()}</pubDate></item>`
     )
@@ -16,7 +28,7 @@ export async function GET() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"><channel>
 <title>Blog</title>
-<link>/</link>
+<link>${baseUrl}/</link>
 ${items}
 </channel></rss>`;
 
