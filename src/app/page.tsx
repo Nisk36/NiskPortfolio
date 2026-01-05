@@ -19,17 +19,6 @@ const Home = () => {
               UX設計・コンテンツ設計・情報設計を軸に、読みやすく、行動につながる体験づくりを支援しています。
             </p>
           </div>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              className="surface pixel-frame px-4 py-2 text-sm font-medium no-underline"
-              href="/blog"
-            >
-              Blogを読む
-            </Link>
-            <a className="px-4 py-2 text-sm font-medium" href="#contact">
-              Contact
-            </a>
-          </div>
         </section>
 
         <section className="space-y-6">
