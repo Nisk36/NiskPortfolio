@@ -1,0 +1,98 @@
+"use client";
+
+import Link from "next/link";
+import { useMemo, useState } from "react";
+import type { Post } from "contentlayer/generated";
+
+type BlogIndexClientProps = {
+  posts: Post[];
+};
+
+const BlogIndexClient = ({ posts }: BlogIndexClientProps) => {
+  const [activeTag, setActiveTag] = useState<string | null>(null);
+
+  const tags = useMemo(() => {
+    const uniqueTags = new Set<string>();
+    posts.forEach((post) => {
+      post.tags?.forEach((tag) => uniqueTags.add(tag));
+    });
+    return Array.from(uniqueTags).sort((a, b) => a.localeCompare(b, "ja"));
+  }, [posts]);
+
+  const visiblePosts = useMemo(() => {
+    if (!activeTag) return posts;
+    return posts.filter((post) => post.tags?.includes(activeTag));
+  }, [activeTag, posts]);
+
+  return (
+    <div className="space-y-6">
+      <div className="space-y-2">
+        <p className="text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
+          タグで絞り込む
+        </p>
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={() => setActiveTag(null)}
+            className={`rounded-full border px-3 py-1 text-xs transition ${
+              activeTag === null
+                ? "border-[var(--ok)] bg-[var(--ok)] text-[var(--background)]"
+                : "border-[var(--line)] text-[var(--muted)] hover:border-[var(--ok)] hover:text-[var(--text)]"
+            }`}
+          >
+            すべて
+          </button>
+          {tags.map((tag) => (
+            <button
+              key={tag}
+              type="button"
+              onClick={() => setActiveTag(tag)}
+              className={`rounded-full border px-3 py-1 text-xs transition ${
+                activeTag === tag
+                  ? "border-[var(--ok)] bg-[var(--ok)] text-[var(--background)]"
+                  : "border-[var(--line)] text-[var(--muted)] hover:border-[var(--ok)] hover:text-[var(--text)]"
+              }`}
+            >
+              {tag}
+            </button>
+          ))}
+        </div>
+      </div>
+      <div className="grid gap-4">
+        {visiblePosts.map((post) => (
+          <Link
+            key={post._id}
+            href={`/blog/${post.slug}`}
+            className="surface pixel-frame flex flex-col gap-2 p-4 no-underline"
+          >
+            <div className="flex flex-wrap items-center gap-3 text-xs text-[var(--muted)]">
+              <span>{new Date(post.date).toLocaleDateString()}</span>
+              {post.tags?.length ? (
+                <div className="flex flex-wrap gap-2">
+                  {post.tags.map((tag) => (
+                    <span key={tag} className="tag-badge">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+            <h2 className="text-lg font-semibold text-[var(--text)]">
+              {post.title}
+            </h2>
+            <p className="text-sm text-[var(--muted)]">
+              {post.summary ?? "続きを読む"}
+            </p>
+          </Link>
+        ))}
+        {visiblePosts.length === 0 ? (
+          <div className="rounded-2xl border border-dashed border-[var(--line)] px-4 py-8 text-sm text-[var(--muted)]">
+            該当する記事が見つかりませんでした。
+          </div>
+        ) : null}
+      </div>
+    </div>
+  );
+};
+
+export default BlogIndexClient;
