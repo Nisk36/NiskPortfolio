@@ -42,9 +42,13 @@ const RootLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <html lang="ja" data-theme="light">
+    <html
+      lang="ja"
+      data-theme="light"
+      className={mPlus1CodeNerd.variable}
+    >
       <body
-        className={`${mPlus1CodeNerd.variable} antialiased`}
+        className={`${mPlus1CodeNerd.className} antialiased`}
       >
         <div className="min-h-screen flex flex-col">
           <header className="border-b border-[var(--line)]">
