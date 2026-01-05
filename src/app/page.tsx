@@ -11,9 +11,6 @@ const Home = () => {
     <div className="container py-16">
       <main className="flex flex-col gap-12">
         <section className="flex flex-col gap-6">
-          <p className="text-sm uppercase tracking-[0.3em] text-[var(--muted)]">
-            Portfolio
-          </p>
           <div className="space-y-4">
             <h1 className="text-3xl font-semibold leading-tight sm:text-4xl">
               伝わる体験を設計し、プロダクトとブランドの関係性を磨きます。
