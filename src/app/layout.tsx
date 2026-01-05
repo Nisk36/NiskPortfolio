@@ -63,18 +63,12 @@ const RootLayout = ({
                 Nisk Portfolio
               </Link>
               <nav className="flex flex-wrap gap-4 text-sm">
-                <Link href="/" className="no-underline">
-                  Home
-                </Link>
                 <Link href="/blog" className="no-underline">
                   Blog
                 </Link>
                 <Link href="/works" className="no-underline">
                   Works
                 </Link>
-                <a href="#contact" className="no-underline">
-                  Contact
-                </a>
               </nav>
               <ThemeToggle />
             </div>
