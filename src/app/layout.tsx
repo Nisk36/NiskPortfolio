@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ThemeToggle from "../components/ThemeToggle";
+import { mPlus1CodeNerd } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -43,7 +44,7 @@ const RootLayout = ({
   return (
     <html lang="ja" data-theme="light">
       <body
-        className="antialiased"
+        className={`${mPlus1CodeNerd.variable} antialiased`}
       >
         <div className="min-h-screen flex flex-col">
           <header className="border-b border-[var(--line)]">
