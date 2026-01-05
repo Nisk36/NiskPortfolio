@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { allPosts } from "contentlayer/generated";
+import BlogIndexClient from "../../components/BlogIndexClient";
 
 const BlogIndex = () => {
   const posts = [...allPosts]
@@ -15,34 +15,7 @@ const BlogIndex = () => {
             体験設計やプロダクトづくりのメモをまとめています。
           </p>
         </div>
-        <div className="grid gap-4">
-          {posts.map((post) => (
-            <Link
-              key={post._id}
-              href={`/blog/${post.slug}`}
-              className="surface pixel-frame flex flex-col gap-2 p-4 no-underline"
-            >
-              <div className="flex flex-wrap items-center gap-3 text-xs text-[var(--muted)]">
-                <span>{new Date(post.date).toLocaleDateString()}</span>
-                {post.tags?.length ? (
-                  <div className="flex flex-wrap gap-2">
-                    {post.tags.map((tag) => (
-                      <span key={tag} className="tag-badge">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                ) : null}
-              </div>
-              <h2 className="text-lg font-semibold text-[var(--text)]">
-                {post.title}
-              </h2>
-              <p className="text-sm text-[var(--muted)]">
-                {post.summary ?? "続きを読む"}
-              </p>
-            </Link>
-          ))}
-        </div>
+        <BlogIndexClient posts={posts} />
       </main>
     </div>
   );
