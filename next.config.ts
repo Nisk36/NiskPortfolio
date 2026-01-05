@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
   // リポジトリの Pages がルートドメイン（<user>.github.io）なら BASE_PATH は空にしてください。
   basePath: basePath || undefined,
   assetPrefix: basePath || undefined,
+  trailingSlash: true,
   // experimental: { typedRoutes: true },
 };
 
