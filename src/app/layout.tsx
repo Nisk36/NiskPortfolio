@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ThemeToggle from "../components/ThemeToggle";
-import { mPlus1CodeNerd } from "./fonts";
+import { mPlus1 } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -42,14 +42,8 @@ const RootLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <html
-      lang="ja"
-      data-theme="light"
-      className={mPlus1CodeNerd.variable}
-    >
-      <body
-        className={`${mPlus1CodeNerd.className} antialiased`}
-      >
+      <html lang="ja" data-theme="light" className={mPlus1.variable}>
+        <body className={`${mPlus1.className} antialiased`}>
         <div className="min-h-screen flex flex-col">
           <header className="border-b border-[var(--line)]">
             <div className="container flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:justify-between">
