@@ -1,6 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
+import darkModeIcon from "../icons/N_night-sky.png";
 
 type Theme = "light" | "dark";
 
@@ -58,24 +60,14 @@ const ThemeToggle = () => {
       className="inline-flex items-center justify-center border border-[var(--line)] p-2 rounded-full transition hover:bg-[color-mix(in srgb, var(--line) 25%, transparent)]"
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
     >
-      <svg
+      <Image
+        src={darkModeIcon}
+        alt=""
+        width={20}
+        height={20}
+        className="h-5 w-5"
         aria-hidden="true"
-        viewBox="0 0 64 64"
-        className="h-5 w-5 text-[var(--text)]"
-      >
-        <path
-          fill="currentColor"
-          d="M44.7 5.4c-3.1-.8-6.3-1-9.5-.7C21.7 5.9 11.2 17.4 11.2 31.1c0 14.8 12 26.8 26.8 26.8 7.5 0 14.2-3.1 19.1-8-3.8 9.4-13 16.1-23.8 16.1-14.7 0-26.6-11.9-26.6-26.6 0-13.7 10.1-25.1 23.5-26.4 5-.5 10 .2 14.5 2.4z"
-        />
-        <path
-          fill="currentColor"
-          d="M20 18l4.5 4.5L20 27l-4.5-4.5L20 18z"
-        />
-        <path
-          fill="currentColor"
-          d="M35 9l3.5 3.5L35 16l-3.5-3.5L35 9z"
-        />
-      </svg>
+      />
       <span className="sr-only">
         {theme === "light" ? "Dark" : "Light"} Mode
       </span>
