@@ -1,6 +1,6 @@
 // Generate static RSS feed into public/feed.xml for GitHub Pages
 // Runs after `next build` so Contentlayer has generated `.contentlayer/generated/index.mjs`
-import { readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
@@ -33,7 +33,9 @@ async function run() {
     siteTitle
   )}</title>\n<link>${escapeXml(siteLink)}</link>\n${items}\n</channel></rss>`;
 
-  const outPath = resolve(__dirname, '..', 'public', 'feed.xml');
+  const outDir = resolve(__dirname, '..', 'public');
+  const outPath = resolve(outDir, 'feed.xml');
+  mkdirSync(outDir, { recursive: true });
   writeFileSync(outPath, xml, { encoding: 'utf8' });
   // eslint-disable-next-line no-console
   console.log(`Generated RSS at ${outPath}`);
