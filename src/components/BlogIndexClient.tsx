@@ -11,7 +11,7 @@ type BlogIndexClientProps = {
 const BlogIndexClient = ({ posts }: BlogIndexClientProps) => {
   const [activeTag, setActiveTag] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 6;
+  const pageSize = 10;
 
   const tags = useMemo(() => {
     const uniqueTags = new Set<string>();
@@ -29,6 +29,27 @@ const BlogIndexClient = ({ posts }: BlogIndexClientProps) => {
   const totalPages = useMemo(() => {
     return Math.max(1, Math.ceil(filteredPosts.length / pageSize));
   }, [filteredPosts.length, pageSize]);
+
+  const paginationItems = useMemo(() => {
+    if (totalPages <= 7) {
+      return Array.from({ length: totalPages }, (_, index) => index + 1);
+    }
+    if (currentPage <= 3) {
+      return [1, 2, 3, "ellipsis", totalPages];
+    }
+    if (currentPage >= totalPages - 2) {
+      return [1, "ellipsis", totalPages - 2, totalPages - 1, totalPages];
+    }
+    return [
+      1,
+      "ellipsis",
+      currentPage - 1,
+      currentPage,
+      currentPage + 1,
+      "ellipsis",
+      totalPages,
+    ];
+  }, [currentPage, totalPages]);
 
   const visiblePosts = useMemo(() => {
     const startIndex = (currentPage - 1) * pageSize;
@@ -113,10 +134,20 @@ const BlogIndexClient = ({ posts }: BlogIndexClientProps) => {
         ) : null}
       </div>
       {totalPages > 1 ? (
-        <div className="flex flex-wrap items-center gap-2">
-          {Array.from({ length: totalPages }, (_, index) => {
-            const pageNumber = index + 1;
-            const isActive = pageNumber === currentPage;
+        <div className="flex flex-wrap items-center justify-center gap-2">
+          {paginationItems.map((item, index) => {
+            if (item === "ellipsis") {
+              return (
+                <span
+                  key={`ellipsis-${index}`}
+                  className="flex h-9 w-9 items-center justify-center text-xs text-[var(--muted)]"
+                >
+                  …
+                </span>
+              );
+            }
+            const pageNumber = item;
+            const isActive = item === currentPage;
             return (
               <button
                 key={pageNumber}
