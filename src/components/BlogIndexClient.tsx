@@ -30,7 +30,7 @@ const BlogIndexClient = ({ posts }: BlogIndexClientProps) => {
     return Math.max(1, Math.ceil(filteredPosts.length / pageSize));
   }, [filteredPosts.length, pageSize]);
 
-  const paginationItems = useMemo(() => {
+  const paginationItems = useMemo<Array<number | "ellipsis">>(() => {
     if (totalPages <= 7) {
       return Array.from({ length: totalPages }, (_, index) => index + 1);
     }
