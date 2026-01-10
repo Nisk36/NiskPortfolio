@@ -64,23 +64,6 @@ const RootLayout = ({
             </div>
           </header>
           <div className="flex-1">{children}</div>
-          <footer id="contact" className="border-t border-[var(--line)]">
-            <div className="container py-10">
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <p className="text-sm text-[var(--muted)]">Contact</p>
-                </div>
-                <div className="flex flex-wrap gap-4 text-sm sm:mt-0 mt-2">
-                  <a href="mailto:nisknishimura@gmail.com">
-                    nisknishimura@gmail.com
-                  </a>
-                  <a href="https://github.com/Nisk36">GitHub</a>
-                  <a href="https://x.com/">X (Twitter)</a>
-                  <a href="https://nisk36.github.io/NiskPortfolio/feed.xml">RSS</a>
-                </div>
-              </div>
-            </div>
-          </footer>
         </div>
       </body>
     </html>
