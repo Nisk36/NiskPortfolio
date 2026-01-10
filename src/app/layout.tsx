@@ -48,17 +48,19 @@ const RootLayout = ({
           <header className="border-b border-[var(--line)]">
             <div className="container flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:justify-between">
               <Link href="/" className="text-lg font-semibold no-underline">
-                Nisk Portfolio
+                NiskDev
               </Link>
-              <nav className="flex flex-wrap gap-4 text-sm">
-                <Link href="/blog" className="no-underline">
-                  Blog
-                </Link>
-                <Link href="/works" className="no-underline">
-                  Works
-                </Link>
-              </nav>
-              <ThemeToggle />
+              <div className="flex items-center gap-6 sm:ml-auto">
+                <nav className="flex flex-wrap gap-6 text-base font-semibold">
+                  <Link href="/blog" className="no-underline">
+                    Blog
+                  </Link>
+                  <Link href="/works" className="no-underline">
+                    Works
+                  </Link>
+                </nav>
+                <ThemeToggle />
+              </div>
             </div>
           </header>
           <div className="flex-1">{children}</div>
