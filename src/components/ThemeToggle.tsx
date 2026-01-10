@@ -57,7 +57,7 @@ const ThemeToggle = () => {
     <button
       type="button"
       onClick={handleToggle}
-      className="inline-flex items-center justify-center border border-[var(--line)] p-2 rounded-full transition hover:bg-[color-mix(in srgb, var(--line) 25%, transparent)]"
+      className="theme-toggle inline-flex items-center justify-center border border-[var(--line)] p-2 rounded-full transition hover:bg-[color-mix(in srgb, var(--line) 25%, transparent)]"
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
     >
       <Image
