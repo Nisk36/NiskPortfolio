@@ -6,3 +6,6 @@ const sortWorksByPublishedAt = (works: Work[]) =>
 
 export const getPublishedWorks = () =>
   sortWorksByPublishedAt([...allWorks].filter((work) => !work.draft));
+
+export const getLatestWorks = (limit: number) =>
+  getPublishedWorks().slice(0, limit);

@@ -1,11 +1,12 @@
 import Link from "next/link";
-import type { Post } from "contentlayer/generated";
+import type { Post, Work } from "contentlayer/generated";
 
 type HomeViewProps = {
   posts: Post[];
+  works: Work[];
 };
 
-const HomeView = ({ posts }: HomeViewProps) => (
+const HomeView = ({ posts, works }: HomeViewProps) => (
   <>
     <div className="container pt-24 pb-16">
       <main className="flex flex-col gap-12">
@@ -44,6 +45,39 @@ const HomeView = ({ posts }: HomeViewProps) => (
                 </div>
                 <p className="text-sm text-[var(--muted)]">
                   {post.summary ?? "続きを読む"}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="space-y-6">
+          <div className="flex items-center justify-between">
+            <h2 className="text-xl font-semibold">Latest Work</h2>
+            <Link href="/works" className="text-sm">
+              すべて見る
+            </Link>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {works.map((work) => (
+              <Link
+                key={work._id}
+                href={`/works/${work.slug}`}
+                className="surface pixel-frame flex h-full flex-col gap-3 p-4 no-underline"
+              >
+                <div className="space-y-2">
+                  <div className="flex flex-wrap items-center gap-3 text-xs text-[var(--muted)]">
+                    <span>{work.period}</span>
+                    {work.stack?.length ? (
+                      <span>{work.stack.join(" / ")}</span>
+                    ) : null}
+                  </div>
+                  <h3 className="text-base font-semibold text-[var(--text)]">
+                    {work.title}
+                  </h3>
+                </div>
+                <p className="text-sm text-[var(--muted)]">
+                  {work.summary ?? "詳細を見る"}
                 </p>
               </Link>
             ))}
