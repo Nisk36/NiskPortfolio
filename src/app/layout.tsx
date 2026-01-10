@@ -76,6 +76,7 @@ const RootLayout = ({
                   </a>
                   <a href="https://github.com/Nisk36">GitHub</a>
                   <a href="https://x.com/">X (Twitter)</a>
+                  <a href="https://nisk36.github.io/NiskPortfolio/feed.xml">RSS</a>
                 </div>
               </div>
             </div>
