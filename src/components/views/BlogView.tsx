@@ -6,7 +6,7 @@ type BlogViewProps = {
 };
 
 const BlogView = ({ posts }: BlogViewProps) => (
-  <div className="container py-12">
+  <div className="container pt-24 pb-16">
     <main className="space-y-8">
       <div className="space-y-2">
         <h1 className="text-2xl font-semibold">Blog</h1>

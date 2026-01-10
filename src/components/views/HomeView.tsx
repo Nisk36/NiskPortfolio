@@ -6,7 +6,7 @@ type HomeViewProps = {
 };
 
 const HomeView = ({ posts }: HomeViewProps) => (
-  <div className="container py-16">
+  <div className="container pt-24 pb-16">
     <main className="flex flex-col gap-12">
       <section className="flex flex-col gap-6">
         <div className="space-y-4">
