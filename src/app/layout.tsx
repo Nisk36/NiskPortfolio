@@ -69,11 +69,12 @@ const RootLayout = ({
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p className="text-sm text-[var(--muted)]">Contact</p>
-                  <p className="text-base font-medium">Get in touch</p>
                 </div>
-                <div className="flex flex-wrap gap-4 text-sm">
-                  <a href="mailto:hello@example.com">hello@example.com</a>
-                  <a href="https://github.com/">GitHub</a>
+                <div className="flex flex-wrap gap-4 text-sm sm:mt-0 mt-2">
+                  <a href="mailto:nisknishimura@gmail.com">
+                    nisknishimura@gmail.com
+                  </a>
+                  <a href="https://github.com/Nisk36">GitHub</a>
                   <a href="https://x.com/">X (Twitter)</a>
                 </div>
               </div>
