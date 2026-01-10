@@ -87,11 +87,9 @@ const HomeView = ({ posts, works }: HomeViewProps) => (
     </div>
     <footer id="contact" className="mt-12">
       <div className="container py-10">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-sm text-[var(--muted)]">Contact</p>
-          </div>
-          <div className="flex flex-wrap items-center gap-4 text-sm sm:mt-0 mt-2">
+        <div className="flex flex-col items-center gap-4 text-center">
+          <p className="text-sm text-[var(--muted)]">Contact</p>
+          <div className="flex flex-wrap items-center justify-center gap-4 text-sm">
             <a
               href="mailto:nisknishimura@gmail.com"
               aria-label="Email"
@@ -125,7 +123,6 @@ const HomeView = ({ posts, works }: HomeViewProps) => (
                 <path d="M12 2C6.477 2 2 6.484 2 12.02c0 4.432 2.865 8.19 6.839 9.52.5.093.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.108-1.466-1.108-1.466-.907-.62.069-.608.069-.608 1.003.07 1.531 1.033 1.531 1.033.892 1.53 2.341 1.088 2.91.832.091-.648.349-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.953 0-1.094.39-1.99 1.03-2.69-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.51 9.51 0 0 1 12 6.844c.851.004 1.705.115 2.504.337 1.909-1.296 2.748-1.026 2.748-1.026.546 1.378.203 2.397.1 2.65.64.7 1.028 1.596 1.028 2.69 0 3.85-2.338 4.697-4.566 4.946.359.31.679.92.679 1.855 0 1.338-.012 2.42-.012 2.75 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.02C22 6.484 17.523 2 12 2Z" />
               </svg>
             </a>
-            <a href="https://x.com/">X (Twitter)</a>
             <a
               href="https://nisk36.github.io/NiskPortfolio/feed.xml"
               aria-label="RSS"
