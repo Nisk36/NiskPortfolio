@@ -1,5 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Post } from "contentlayer/generated";
+import githubIcon from "../../icons/github-mark.png";
+import mailIcon from "../../icons/mail.png";
+import rssIcon from "../../icons/rss.png";
 
 type HomeViewProps = {
   posts: Post[];
@@ -58,13 +62,47 @@ const HomeView = ({ posts }: HomeViewProps) => (
             <p className="text-sm text-[var(--muted)]">Contact</p>
           </div>
           <div className="flex flex-wrap gap-4 text-sm sm:mt-0 mt-2">
-            <a href="mailto:nisknishimura@gmail.com">
-              nisknishimura@gmail.com
+            <a
+              href="mailto:nisknishimura@gmail.com"
+              aria-label="Email"
+              className="inline-flex items-center"
+            >
+              <Image
+                src={mailIcon}
+                alt=""
+                width={20}
+                height={20}
+                className="h-5 w-5"
+                aria-hidden="true"
+              />
             </a>
-            <a href="https://github.com/Nisk36">GitHub</a>
-            <a href="https://x.com/">X (Twitter)</a>
-            <a href="https://nisk36.github.io/NiskPortfolio/feed.xml">
-              RSS
+            <a
+              href="https://github.com/Nisk36"
+              aria-label="GitHub"
+              className="inline-flex items-center"
+            >
+              <Image
+                src={githubIcon}
+                alt=""
+                width={20}
+                height={20}
+                className="h-5 w-5"
+                aria-hidden="true"
+              />
+            </a>
+            <a
+              href="https://nisk36.github.io/NiskPortfolio/feed.xml"
+              aria-label="RSS"
+              className="inline-flex items-center"
+            >
+              <Image
+                src={rssIcon}
+                alt=""
+                width={20}
+                height={20}
+                className="h-5 w-5"
+                aria-hidden="true"
+              />
             </a>
           </div>
         </div>
