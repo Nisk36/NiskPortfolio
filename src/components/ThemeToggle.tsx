@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import darkModeIcon from "../icons/N_night-sky.png";
+import lightModeIcon from "../icons/B_sunny.png";
 
 type Theme = "light" | "dark";
 
@@ -61,7 +62,7 @@ const ThemeToggle = () => {
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
     >
       <Image
-        src={darkModeIcon}
+        src={theme === "light" ? darkModeIcon : lightModeIcon}
         alt=""
         width={20}
         height={20}
