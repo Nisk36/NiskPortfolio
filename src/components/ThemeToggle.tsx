@@ -54,24 +54,26 @@ const ThemeToggle = () => {
     return null;
   }
 
+  const isDark = theme === "dark";
+  const toggleIcon = isDark ? lightModeIcon : darkModeIcon;
+  const toggleLabel = isDark ? "Light" : "Dark";
+
   return (
     <button
       type="button"
       onClick={handleToggle}
       className="theme-toggle inline-flex items-center justify-center border border-[var(--line)] p-2 rounded-full transition hover:bg-[color-mix(in srgb, var(--line) 25%, transparent)]"
-      aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+      aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
     >
       <Image
-        src={theme === "light" ? darkModeIcon : lightModeIcon}
+        src={toggleIcon}
         alt=""
         width={20}
         height={20}
         className="h-5 w-5"
         aria-hidden="true"
       />
-      <span className="sr-only">
-        {theme === "light" ? "Dark" : "Light"} Mode
-      </span>
+      <span className="sr-only">{toggleLabel} Mode</span>
     </button>
   );
 };
