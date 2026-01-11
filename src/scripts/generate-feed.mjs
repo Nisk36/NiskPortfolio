@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 async function run() {
-  const postsIndexPath = resolve(__dirname, '..', '.contentlayer', 'generated', 'Post', '_index.json');
+  const postsIndexPath = resolve(__dirname, '..', '..', '.contentlayer', 'generated', 'Post', '_index.json');
   const allPosts = JSON.parse(readFileSync(postsIndexPath, 'utf8'));
 
   const items = allPosts
@@ -37,7 +37,6 @@ async function run() {
   mkdirSync(publicDir, { recursive: true });
   const outPath = resolve(publicDir, 'feed.xml');
   writeFileSync(outPath, xml, { encoding: 'utf8' });
-  // eslint-disable-next-line no-console
   console.log(`Generated RSS at ${outPath}`);
 }
 
@@ -50,7 +49,6 @@ function escapeXml(str) {
 }
 
 run().catch((err) => {
-  // eslint-disable-next-line no-console
   console.error(err);
   process.exit(1);
 });
