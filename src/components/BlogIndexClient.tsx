@@ -1,7 +1,7 @@
 "use client";
 
 import type { Post } from "contentlayer/generated";
-import PostCard from "@/components/PostCard";
+import PostCardIndex from "@/components/PostCardIndex";
 import useBlogIndex from "@/hooks/useBlogIndex";
 import { formatDate } from "@/utils/date";
 
@@ -58,10 +58,9 @@ const BlogIndexClient = ({ posts }: BlogIndexClientProps) => {
       </div>
       <div className="grid gap-4">
         {visiblePosts.map((post) => (
-          <PostCard
+          <PostCardIndex
             key={post._id}
             post={post}
-            variant="index"
             formattedDate={formatDate(post.date)}
           />
         ))}
