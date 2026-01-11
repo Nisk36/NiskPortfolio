@@ -1,12 +1,13 @@
 import type { Work } from "contentlayer/generated";
 import WorkCardIndex from "@/components/WorkCardIndex";
+import PageContainer from "@/components/PageContainer";
 
 type WorksViewProps = {
   works: Work[];
 };
 
 const WorksView = ({ works }: WorksViewProps) => (
-  <div className="container pt-24 pb-16">
+  <PageContainer>
     <main className="space-y-8">
       <div className="space-y-2">
         <h1 className="text-2xl font-semibold">Works</h1>
@@ -20,7 +21,7 @@ const WorksView = ({ works }: WorksViewProps) => (
         ))}
       </div>
     </main>
-  </div>
+  </PageContainer>
 );
 
 export default WorksView;

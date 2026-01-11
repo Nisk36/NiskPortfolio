@@ -11,7 +11,7 @@ type BaseCardProps = {
 const BaseCard = ({ href, isHome, children, className }: BaseCardProps) => {
   const layoutClass = isHome ? "h-full gap-3 p-4" : "gap-2 p-4";
   const classNames = [
-    "surface pixel-frame flex flex-col no-underline",
+    "card-base",
     layoutClass,
     className,
   ]

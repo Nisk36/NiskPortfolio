@@ -177,3 +177,17 @@ blockquote {
 .pixel-frame:hover {
   box-shadow: 1px 1px 0 0 var(--line);
 }
+
+.card-base {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  background: var(--surface);
+  border-radius: 1rem;
+  border: 1px solid var(--line);
+  transition: box-shadow 0.2s ease;
+}
+
+.card-base:hover {
+  box-shadow: 1px 1px 0 0 var(--line);
+}

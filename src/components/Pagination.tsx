@@ -1,5 +1,7 @@
 "use client";
 
+import { getBlogIndexButtonClassName } from "@/components/blogIndexButtonStyles";
+
 type PaginationItem = number | "ellipsis";
 
 type PaginationProps = {
@@ -9,7 +11,18 @@ type PaginationProps = {
   onPageChange: (page: number) => void;
 };
 
-const Pagination = ({ currentPage, totalPages, items, onPageChange }: PaginationProps) => {
+const Pagination = ({
+  currentPage,
+  totalPages,
+  items,
+  onPageChange,
+}: PaginationProps) => {
+  const baseClass =
+    "flex h-9 w-9 items-center justify-center rounded-full border text-xs transition";
+  const activeClass =
+    "border-[var(--accent)] bg-[var(--accent)] text-[var(--background)]";
+  const inactiveClass =
+    "border-[var(--line)] text-[var(--muted)] hover:border-[var(--accent)] hover:text-[var(--text)]";
   if (totalPages <= 1) {
     return null;
   }
@@ -34,11 +47,12 @@ const Pagination = ({ currentPage, totalPages, items, onPageChange }: Pagination
             key={pageNumber}
             type="button"
             onClick={() => onPageChange(pageNumber)}
-            className={`flex h-9 w-9 items-center justify-center rounded-full border text-xs transition ${
-              isActive
-                ? "border-[var(--accent)] bg-[var(--accent)] text-[var(--background)]"
-                : "border-[var(--line)] text-[var(--muted)] hover:border-[var(--accent)] hover:text-[var(--text)]"
-            }`}
+            className={getBlogIndexButtonClassName({
+              baseClass,
+              activeClass,
+              inactiveClass,
+              isActive,
+            })}
           >
             {pageNumber}
           </button>
