@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "preexport": "node scripts/generate-feed.mjs",
+    "preexport": "node src/scripts/generate-feed.mjs",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
