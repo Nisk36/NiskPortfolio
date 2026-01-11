@@ -3,6 +3,7 @@ import MDXRender from "../MDXRender";
 import CardMetaRow from "../CardMetaRow";
 import TagBadge from "../TagBadge";
 import TableOfContents from "../TableOfContents";
+import { blogDateFormatOptions, formatDate } from "@/utils/date";
 
 type BlogShowViewProps = {
   post: Post;
@@ -14,7 +15,7 @@ const BlogShowView = ({ post }: BlogShowViewProps) => (
       <article className="space-y-6">
         <header className="space-y-3">
           <CardMetaRow>
-            <span>{new Date(post.date).toLocaleDateString()}</span>
+            <span>{formatDate(post.date, "ja-JP", blogDateFormatOptions)}</span>
             {post.tags?.length ? (
               <div className="flex flex-wrap gap-2">
                 {post.tags.map((tag) => (
