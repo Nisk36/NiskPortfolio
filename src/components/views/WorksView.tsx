@@ -1,5 +1,5 @@
-import Link from "next/link";
 import type { Work } from "contentlayer/generated";
+import WorkCard from "@/components/WorkCard";
 
 type WorksViewProps = {
   works: Work[];
@@ -16,22 +16,7 @@ const WorksView = ({ works }: WorksViewProps) => (
       </div>
       <div className="grid gap-4">
         {works.map((work) => (
-          <Link
-            key={work._id}
-            href={`/works/${work.slug}`}
-            className="surface pixel-frame flex flex-col gap-2 p-4 no-underline"
-          >
-            <div className="flex flex-wrap items-center gap-3 text-xs text-[var(--muted)]">
-              <span>{work.period}</span>
-              {work.stack?.length ? (
-                <span>{work.stack.join(" / ")}</span>
-              ) : null}
-            </div>
-            <h2 className="text-lg font-semibold text-[var(--text)]">
-              {work.title}
-            </h2>
-            <p className="text-sm text-[var(--muted)]">{work.summary}</p>
-          </Link>
+          <WorkCard key={work._id} work={work} variant="index" />
         ))}
       </div>
     </main>
