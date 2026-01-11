@@ -1,11 +1,8 @@
 import { allPosts } from "contentlayer/generated";
-import type { Post } from "contentlayer/generated";
-
-const sortPostsByDate = (posts: Post[]) =>
-  posts.sort((a, b) => +new Date(b.date) - +new Date(a.date));
+import { filterPublished, sortByDate } from "./utils";
 
 export const getPublishedPosts = () =>
-  sortPostsByDate([...allPosts].filter((post) => !post.draft));
+  sortByDate(filterPublished(allPosts, "draft"), "date");
 
 export const getLatestPosts = (limit: number) =>
   getPublishedPosts().slice(0, limit);
