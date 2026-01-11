@@ -5,6 +5,7 @@ import WorkCard from "@/components/WorkCard";
 import EmailIcon from "@/components/icons/EmailIcon";
 import GitHubIcon from "@/components/icons/GitHubIcon";
 import RssIcon from "@/components/icons/RssIcon";
+import { formatDate } from "@/utils/date";
 
 type HomeViewProps = {
   posts: Post[];
@@ -35,7 +36,12 @@ const HomeView = ({ posts, works }: HomeViewProps) => (
           </div>
           <div className="grid gap-4 md:grid-cols-3">
             {posts.map((post) => (
-              <PostCard key={post._id} post={post} variant="home" />
+              <PostCard
+                key={post._id}
+                post={post}
+                variant="home"
+                formattedDate={formatDate(post.date)}
+              />
             ))}
           </div>
         </section>
