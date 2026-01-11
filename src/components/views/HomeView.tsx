@@ -3,6 +3,7 @@ import HomeContact from "@/components/views/HomeContact";
 import HomeHero from "@/components/views/HomeHero";
 import HomeLatestBlog from "@/components/views/HomeLatestBlog";
 import HomeLatestWork from "@/components/views/HomeLatestWork";
+import PageContainer from "@/components/PageContainer";
 
 type HomeViewProps = {
   posts: Post[];
@@ -11,13 +12,13 @@ type HomeViewProps = {
 
 const HomeView = ({ posts, works }: HomeViewProps) => (
   <>
-    <div className="container pt-24 pb-16">
+    <PageContainer>
       <main className="flex flex-col gap-12">
         <HomeHero />
         <HomeLatestBlog posts={posts} />
         <HomeLatestWork works={works} />
       </main>
-    </div>
+    </PageContainer>
     <HomeContact />
   </>
 );
