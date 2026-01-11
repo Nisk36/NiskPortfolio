@@ -3,11 +3,10 @@ import BaseCard from "@/components/BaseCard";
 
 type WorkCardHomeProps = {
   work: Work;
-  summaryFallback?: string;
 };
 
-const WorkCardHome = ({ work, summaryFallback }: WorkCardHomeProps) => {
-  const summaryText = work.summary ?? summaryFallback;
+const WorkCardHome = ({ work }: WorkCardHomeProps) => {
+  const summaryText = work.summary ?? "詳細を見る";
 
   return (
     <BaseCard href={`/works/${work.slug}`} isHome>

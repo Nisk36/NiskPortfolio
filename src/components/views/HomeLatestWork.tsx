@@ -16,11 +16,7 @@ const HomeLatestWork = ({ works }: HomeLatestWorkProps) => (
     </div>
     <div className="grid gap-4 md:grid-cols-3">
       {works.map((work) => (
-        <WorkCardHome
-          key={work._id}
-          work={work}
-          summaryFallback="詳細を見る"
-        />
+        <WorkCardHome key={work._id} work={work} />
       ))}
     </div>
   </section>
