@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Work } from "contentlayer/generated";
-import WorkCardHome from "@/components/WorkCardHome";
+import WorkCard from "@/components/WorkCard";
 
 type HomeLatestWorkProps = {
   works: Work[];
@@ -16,7 +16,7 @@ const HomeLatestWork = ({ works }: HomeLatestWorkProps) => (
     </div>
     <div className="grid gap-4 md:grid-cols-3">
       {works.map((work) => (
-        <WorkCardHome key={work._id} work={work} />
+        <WorkCard key={work._id} work={work} variant="home" />
       ))}
     </div>
   </section>

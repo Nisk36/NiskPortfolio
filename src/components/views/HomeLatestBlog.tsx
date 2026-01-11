@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Post } from "contentlayer/generated";
-import PostCardHome from "@/components/PostCardHome";
+import PostCard from "@/components/PostCard";
 
 type HomeLatestBlogProps = {
   posts: Post[];
@@ -16,7 +16,7 @@ const HomeLatestBlog = ({ posts }: HomeLatestBlogProps) => (
     </div>
     <div className="grid gap-4 md:grid-cols-3">
       {posts.map((post) => (
-        <PostCardHome key={post._id} post={post} />
+        <PostCard key={post._id} post={post} variant="home" />
       ))}
     </div>
   </section>
