@@ -4,11 +4,10 @@ import { formatDate } from "@/utils/date";
 
 type PostCardHomeProps = {
   post: Post;
-  formattedDate?: string;
 };
 
-const PostCardHome = ({ post, formattedDate }: PostCardHomeProps) => {
-  const dateLabel = formattedDate ?? formatDate(post.date);
+const PostCardHome = ({ post }: PostCardHomeProps) => {
+  const dateLabel = formatDate(post.date);
 
   return (
     <BaseCard href={`/blog/${post.slug}`} isHome>

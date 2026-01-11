@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { Post } from "contentlayer/generated";
 import PostCardHome from "@/components/PostCardHome";
-import { formatDate } from "@/utils/date";
 
 type HomeLatestBlogProps = {
   posts: Post[];
@@ -17,11 +16,7 @@ const HomeLatestBlog = ({ posts }: HomeLatestBlogProps) => (
     </div>
     <div className="grid gap-4 md:grid-cols-3">
       {posts.map((post) => (
-        <PostCardHome
-          key={post._id}
-          post={post}
-          formattedDate={formatDate(post.date)}
-        />
+        <PostCardHome key={post._id} post={post} />
       ))}
     </div>
   </section>
