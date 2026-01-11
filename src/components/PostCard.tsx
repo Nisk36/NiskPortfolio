@@ -1,5 +1,7 @@
 import type { Post } from "contentlayer/generated";
 import BaseCard from "@/components/BaseCard";
+import CardMetaRow from "@/components/CardMetaRow";
+import TagBadge from "@/components/TagBadge";
 import { formatDate } from "@/utils/date";
 
 type PostCardProps = {
@@ -22,18 +24,16 @@ const PostCard = ({ post, variant }: PostCardProps) => {
         </div>
       ) : (
         <>
-          <div className="flex flex-wrap items-center gap-3 text-xs text-[var(--muted)]">
+          <CardMetaRow>
             <span>{dateLabel}</span>
             {post.tags?.length ? (
               <div className="flex flex-wrap gap-2">
                 {post.tags.map((tag) => (
-                  <span key={tag} className="tag-badge">
-                    {tag}
-                  </span>
+                  <TagBadge key={tag}>{tag}</TagBadge>
                 ))}
               </div>
             ) : null}
-          </div>
+          </CardMetaRow>
           <h2 className="text-lg font-semibold text-[var(--text)]">
             {post.title}
           </h2>

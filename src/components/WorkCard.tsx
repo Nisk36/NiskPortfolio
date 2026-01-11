@@ -1,5 +1,6 @@
 import type { Work } from "contentlayer/generated";
 import BaseCard from "@/components/BaseCard";
+import CardMetaRow from "@/components/CardMetaRow";
 
 type WorkCardProps = {
   work: Work;
@@ -16,10 +17,10 @@ const WorkCard = ({ work, variant }: WorkCardProps) => {
 
   return (
     <BaseCard href={`/works/${work.slug}`} isHome={isHome}>
-      <div className="flex flex-wrap items-center gap-3 text-xs text-[var(--muted)]">
+      <CardMetaRow>
         <span>{work.period}</span>
         {work.stack?.length ? <span>{work.stack.join(" / ")}</span> : null}
-      </div>
+      </CardMetaRow>
       <HeadingTag className={headingClassName}>{work.title}</HeadingTag>
       <p className="text-sm text-[var(--muted)]">{summaryText}</p>
     </BaseCard>
