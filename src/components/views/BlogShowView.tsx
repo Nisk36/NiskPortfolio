@@ -1,5 +1,7 @@
 import type { Post } from "contentlayer/generated";
 import MDXRender from "../MDXRender";
+import CardMetaRow from "../CardMetaRow";
+import TagBadge from "../TagBadge";
 import TableOfContents from "../TableOfContents";
 
 type BlogShowViewProps = {
@@ -11,18 +13,16 @@ const BlogShowView = ({ post }: BlogShowViewProps) => (
     <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_240px]">
       <article className="space-y-6">
         <header className="space-y-3">
-          <div className="flex flex-wrap items-center gap-3 text-xs text-[var(--muted)]">
+          <CardMetaRow>
             <span>{new Date(post.date).toLocaleDateString()}</span>
             {post.tags?.length ? (
               <div className="flex flex-wrap gap-2">
                 {post.tags.map((tag) => (
-                  <span key={tag} className="tag-badge">
-                    {tag}
-                  </span>
+                  <TagBadge key={tag}>{tag}</TagBadge>
                 ))}
               </div>
             ) : null}
-          </div>
+          </CardMetaRow>
           <h1 className="text-3xl font-semibold">{post.title}</h1>
           {post.summary ? (
             <p className="text-base text-[var(--muted)]">{post.summary}</p>
