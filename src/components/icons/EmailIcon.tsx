@@ -1,6 +1,6 @@
 import type { SVGProps } from "react";
 
-const EmailIcon = (props: SVGProps<SVGSVGElement>) => (
+const EmailIcon = ({ className, ...props }: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 24 24"
     fill="none"
@@ -8,6 +8,7 @@ const EmailIcon = (props: SVGProps<SVGSVGElement>) => (
     strokeWidth="1.5"
     strokeLinecap="round"
     strokeLinejoin="round"
+    className={className}
     {...props}
   >
     <path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z" />
