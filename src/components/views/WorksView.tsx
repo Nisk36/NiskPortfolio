@@ -1,5 +1,5 @@
 import type { Work } from "contentlayer/generated";
-import WorkCardIndex from "@/components/WorkCardIndex";
+import WorkCard from "@/components/WorkCard";
 import PageContainer from "@/components/PageContainer";
 
 type WorksViewProps = {
@@ -17,7 +17,7 @@ const WorksView = ({ works }: WorksViewProps) => (
       </div>
       <div className="grid gap-4">
         {works.map((work) => (
-          <WorkCardIndex key={work._id} work={work} />
+          <WorkCard key={work._id} work={work} variant="index" />
         ))}
       </div>
     </main>
