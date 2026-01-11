@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import type { Post } from "contentlayer/generated";
 import PostCard from "@/components/PostCard";
+import { formatDate } from "@/utils/date";
 
 type BlogIndexClientProps = {
   posts: Post[];
@@ -102,7 +103,12 @@ const BlogIndexClient = ({ posts }: BlogIndexClientProps) => {
       </div>
       <div className="grid gap-4">
         {visiblePosts.map((post) => (
-          <PostCard key={post._id} post={post} variant="index" />
+          <PostCard
+            key={post._id}
+            post={post}
+            variant="index"
+            formattedDate={formatDate(post.date)}
+          />
         ))}
         {visiblePosts.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-[var(--line)] px-4 py-8 text-sm text-[var(--muted)]">

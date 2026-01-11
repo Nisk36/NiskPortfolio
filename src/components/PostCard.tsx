@@ -1,13 +1,20 @@
 import Link from "next/link";
 import type { Post } from "contentlayer/generated";
+import { formatDate } from "@/utils/date";
 
 type PostCardProps = {
   post: Post;
   variant?: "home" | "index";
+  formattedDate?: string;
 };
 
-const PostCard = ({ post, variant = "home" }: PostCardProps) => {
+const PostCard = ({
+  post,
+  variant = "home",
+  formattedDate,
+}: PostCardProps) => {
   const isHome = variant === "home";
+  const dateLabel = formattedDate ?? formatDate(post.date);
 
   return (
     <Link
@@ -19,7 +26,7 @@ const PostCard = ({ post, variant = "home" }: PostCardProps) => {
       {isHome ? (
         <div className="space-y-2">
           <p className="text-xs text-[var(--muted)]">
-            {new Date(post.date).toLocaleDateString()}
+            {dateLabel}
           </p>
           <h3 className="text-base font-semibold text-[var(--text)]">
             {post.title}
@@ -28,7 +35,7 @@ const PostCard = ({ post, variant = "home" }: PostCardProps) => {
       ) : (
         <>
           <div className="flex flex-wrap items-center gap-3 text-xs text-[var(--muted)]">
-            <span>{new Date(post.date).toLocaleDateString()}</span>
+            <span>{dateLabel}</span>
             {post.tags?.length ? (
               <div className="flex flex-wrap gap-2">
                 {post.tags.map((tag) => (
