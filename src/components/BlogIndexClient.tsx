@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import type { Post } from "contentlayer/generated";
+import PostCard from "@/components/PostCard";
 
 type BlogIndexClientProps = {
   posts: Post[];
@@ -102,30 +102,7 @@ const BlogIndexClient = ({ posts }: BlogIndexClientProps) => {
       </div>
       <div className="grid gap-4">
         {visiblePosts.map((post) => (
-          <Link
-            key={post._id}
-            href={`/blog/${post.slug}`}
-            className="surface pixel-frame flex flex-col gap-2 p-4 no-underline"
-          >
-            <div className="flex flex-wrap items-center gap-3 text-xs text-[var(--muted)]">
-              <span>{new Date(post.date).toLocaleDateString()}</span>
-              {post.tags?.length ? (
-                <div className="flex flex-wrap gap-2">
-                  {post.tags.map((tag) => (
-                    <span key={tag} className="tag-badge">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              ) : null}
-            </div>
-            <h2 className="text-lg font-semibold text-[var(--text)]">
-              {post.title}
-            </h2>
-            <p className="text-sm text-[var(--muted)]">
-              {post.summary ?? "続きを読む"}
-            </p>
-          </Link>
+          <PostCard key={post._id} post={post} variant="index" />
         ))}
         {visiblePosts.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-[var(--line)] px-4 py-8 text-sm text-[var(--muted)]">

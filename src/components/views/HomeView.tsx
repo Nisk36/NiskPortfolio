@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { Post, Work } from "contentlayer/generated";
+import PostCard from "@/components/PostCard";
+import WorkCard from "@/components/WorkCard";
 
 type HomeViewProps = {
   posts: Post[];
@@ -30,23 +32,7 @@ const HomeView = ({ posts, works }: HomeViewProps) => (
           </div>
           <div className="grid gap-4 md:grid-cols-3">
             {posts.map((post) => (
-              <Link
-                key={post._id}
-                href={`/blog/${post.slug}`}
-                className="surface pixel-frame flex h-full flex-col gap-3 p-4 no-underline"
-              >
-                <div className="space-y-2">
-                  <p className="text-xs text-[var(--muted)]">
-                    {new Date(post.date).toLocaleDateString()}
-                  </p>
-                  <h3 className="text-base font-semibold text-[var(--text)]">
-                    {post.title}
-                  </h3>
-                </div>
-                <p className="text-sm text-[var(--muted)]">
-                  {post.summary ?? "続きを読む"}
-                </p>
-              </Link>
+              <PostCard key={post._id} post={post} variant="home" />
             ))}
           </div>
         </section>
@@ -60,26 +46,12 @@ const HomeView = ({ posts, works }: HomeViewProps) => (
           </div>
           <div className="grid gap-4 md:grid-cols-3">
             {works.map((work) => (
-              <Link
+              <WorkCard
                 key={work._id}
-                href={`/works/${work.slug}`}
-                className="surface pixel-frame flex h-full flex-col gap-3 p-4 no-underline"
-              >
-                <div className="space-y-2">
-                  <div className="flex flex-wrap items-center gap-3 text-xs text-[var(--muted)]">
-                    <span>{work.period}</span>
-                    {work.stack?.length ? (
-                      <span>{work.stack.join(" / ")}</span>
-                    ) : null}
-                  </div>
-                  <h3 className="text-base font-semibold text-[var(--text)]">
-                    {work.title}
-                  </h3>
-                </div>
-                <p className="text-sm text-[var(--muted)]">
-                  {work.summary ?? "詳細を見る"}
-                </p>
-              </Link>
+                work={work}
+                variant="home"
+                summaryFallback="詳細を見る"
+              />
             ))}
           </div>
         </section>
