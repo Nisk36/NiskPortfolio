@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
 import type { Post } from "contentlayer/generated";
 import PostCard from "@/components/PostCard";
+import useBlogIndex from "@/hooks/useBlogIndex";
 import { formatDate } from "@/utils/date";
 
 type BlogIndexClientProps = {
@@ -10,62 +10,17 @@ type BlogIndexClientProps = {
 };
 
 const BlogIndexClient = ({ posts }: BlogIndexClientProps) => {
-  const [activeTag, setActiveTag] = useState<string | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 10;
-
-  const tags = useMemo(() => {
-    const uniqueTags = new Set<string>();
-    posts.forEach((post) => {
-      post.tags?.forEach((tag) => uniqueTags.add(tag));
-    });
-    return Array.from(uniqueTags).sort((a, b) => a.localeCompare(b, "ja"));
-  }, [posts]);
-
-  const filteredPosts = useMemo(() => {
-    if (!activeTag) return posts;
-    return posts.filter((post) => post.tags?.includes(activeTag));
-  }, [activeTag, posts]);
-
-  const totalPages = useMemo(() => {
-    return Math.max(1, Math.ceil(filteredPosts.length / pageSize));
-  }, [filteredPosts.length, pageSize]);
-
-  const paginationItems = useMemo<Array<number | "ellipsis">>(() => {
-    if (totalPages <= 7) {
-      return Array.from({ length: totalPages }, (_, index) => index + 1);
-    }
-    if (currentPage <= 3) {
-      return [1, 2, 3, "ellipsis", totalPages];
-    }
-    if (currentPage >= totalPages - 2) {
-      return [1, "ellipsis", totalPages - 2, totalPages - 1, totalPages];
-    }
-    return [
-      1,
-      "ellipsis",
-      currentPage - 1,
-      currentPage,
-      currentPage + 1,
-      "ellipsis",
-      totalPages,
-    ];
-  }, [currentPage, totalPages]);
-
-  const visiblePosts = useMemo(() => {
-    const startIndex = (currentPage - 1) * pageSize;
-    return filteredPosts.slice(startIndex, startIndex + pageSize);
-  }, [currentPage, filteredPosts, pageSize]);
-
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [activeTag]);
-
-  useEffect(() => {
-    if (currentPage > totalPages) {
-      setCurrentPage(totalPages);
-    }
-  }, [currentPage, totalPages]);
+  const {
+    activeTag,
+    setActiveTag,
+    currentPage,
+    setCurrentPage,
+    tags,
+    filteredPosts,
+    visiblePosts,
+    totalPages,
+    paginationItems,
+  } = useBlogIndex(posts);
 
   return (
     <div className="space-y-6">
@@ -110,7 +65,7 @@ const BlogIndexClient = ({ posts }: BlogIndexClientProps) => {
             formattedDate={formatDate(post.date)}
           />
         ))}
-        {visiblePosts.length === 0 ? (
+        {filteredPosts.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-[var(--line)] px-4 py-8 text-sm text-[var(--muted)]">
             該当する記事が見つかりませんでした。
           </div>
