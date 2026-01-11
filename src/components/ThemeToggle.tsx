@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import darkModeIcon from "../icons/N_night-sky.png";
-import lightModeIcon from "../icons/B_sunny.png";
+const darkModeIcon = "/assets/icons/N_night-sky.png";
+const lightModeIcon = "/assets/icons/B_sunny.png";
 
 type Theme = "light" | "dark";
 

@@ -42,5 +42,5 @@ This repo is configured to deploy to GitHub Pages using static export.
 - Build & export: `pnpm build && pnpm preexport && pnpm export` (outputs to `out/`)
 - Workflow: `.github/workflows/deploy-pages.yml` automatically builds and deploys on push to `main`/`master`.
 - Base path: the workflow auto-detects if the repo is `<user>.github.io` (root) or a project page and sets `BASE_PATH` accordingly.
-- RSS: `scripts/generate-feed.mjs` writes `public/feed.xml` at build time.
+- RSS: `src/scripts/generate-feed.mjs` writes `public/feed.xml` at build time.
 - Note: API routes like `/api/og` are not available on GitHub Pages (static hosting).
