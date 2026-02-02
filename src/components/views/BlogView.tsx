@@ -12,7 +12,7 @@ const BlogView = ({ posts }: BlogViewProps) => (
       <div className="space-y-2">
         <h1 className="text-2xl font-semibold">Blog</h1>
         <p className="text-sm text-[var(--muted)]">
-          体験設計やプロダクトづくりのメモをまとめています。
+          仕事や個人開発での備忘録やメモを書いていきます。
         </p>
       </div>
       <BlogIndexClient posts={posts} />
