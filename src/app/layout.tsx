@@ -11,26 +11,26 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  title: "My Portfolio",
+  title: "NiskDev",
   description: "A personal portfolio showcasing projects and experience.",
   openGraph: {
-    title: "My Portfolio",
+    title: "NiskDev",
     description: "A personal portfolio showcasing projects and experience.",
     url: "/",
-    siteName: "My Portfolio",
+    siteName: "NiskDev",
     type: "website",
     images: [
       {
         url: "/api/og",
         width: 1200,
         height: 630,
-        alt: "My Portfolio",
+        alt: "NiskDev",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "My Portfolio",
+    title: "NiskDev",
     description: "A personal portfolio showcasing projects and experience.",
     images: ["/api/og"],
   },
