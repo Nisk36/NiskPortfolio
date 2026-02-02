@@ -3,7 +3,7 @@ export const runtime = 'edge';
 export const dynamic = 'force-static';
 
 export async function GET() {
-  const title = 'My Portfolio';
+  const title = 'NiskDev';
   return new ImageResponse(
     (
       <div
