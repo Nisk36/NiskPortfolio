@@ -1,29 +1,28 @@
-import { allPosts } from 'contentlayer/generated';
+import { allPosts } from "contentlayer/generated";
+import { getSiteUrlString } from "../../lib/site-url";
 
 export const revalidate = 3600; // 1時間キャッシュ
 
-const baseUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
+const baseUrl = getSiteUrlString();
 
 const escapeXml = (value: string) =>
   value
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;');
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
 
 export async function GET() {
   const items = allPosts
     .filter((p) => !p.draft)
     .map(
       (p) =>
-        `<item><title>${escapeXml(p.title)}</title><link>${baseUrl}/blog/${p.slug}</link><pubDate>${new Date(
+        `<item><title>${escapeXml(p.title)}</title><link>${baseUrl}/blog/${p.slug}/</link><pubDate>${new Date(
           p.date
         ).toUTCString()}</pubDate></item>`
     )
-    .join('');
+    .join("");
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0"><channel>
@@ -33,6 +32,7 @@ ${items}
 </channel></rss>`;
 
   return new Response(xml, {
-    headers: { 'Content-Type': 'application/xml; charset=utf-8' },
+    headers: { "Content-Type": "application/xml; charset=utf-8" },
   });
 }
+

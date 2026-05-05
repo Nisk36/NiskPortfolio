@@ -67,8 +67,8 @@ jobs:
         env:
           # Next.js basePath/assetPrefix
           BASE_PATH: ${{ steps.detect.outputs.base_path }}
-          # For absolute URLs in RSS
-          BASE_URL: ${{ steps.detect.outputs.base_url }}
+          # For metadataBase / sitemap / robots / RSS
+          NEXT_PUBLIC_SITE_URL: ${{ steps.detect.outputs.base_url }}
         run: |
           pnpm build
           pnpm preexport

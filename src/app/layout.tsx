@@ -1,27 +1,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ThemeToggle from "../components/ThemeToggle";
+import { getRequiredSiteUrl } from "../lib/site-url";
 import { mPlus1 } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com"
-  ),
-  alternates: {
-    canonical: "/",
-  },
+  metadataBase: getRequiredSiteUrl(),
   title: "NiskDev",
   description: "A personal portfolio showcasing projects and experience.",
   openGraph: {
     title: "NiskDev",
     description: "A personal portfolio showcasing projects and experience.",
-    url: "/",
     siteName: "NiskDev",
     type: "website",
     images: [
       {
-        url: "/api/og",
+        url: "og.png",
         width: 1200,
         height: 630,
         alt: "NiskDev",
@@ -32,7 +27,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "NiskDev",
     description: "A personal portfolio showcasing projects and experience.",
-    images: ["/api/og"],
+    images: ["og.png"],
   },
 };
 

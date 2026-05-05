@@ -1,26 +1,22 @@
 import type { MetadataRoute } from "next";
+import { getPublishedPosts } from "../models/posts";
+import { getPublishedWorks } from "../models/works";
+import { getSiteUrlString } from "../lib/site-url";
 
 export const dynamic = "force-static";
 
-const baseUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
-
 export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = getSiteUrlString();
   const lastModified = new Date();
 
-  return [
-    {
-      url: `${baseUrl}/`,
-      lastModified,
-    },
-    {
-      url: `${baseUrl}/works`,
-      lastModified,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified,
-    },
+  const urls: string[] = [
+    `${baseUrl}/`,
+    `${baseUrl}/works/`,
+    `${baseUrl}/blog/`,
+    ...getPublishedPosts().map((p) => `${baseUrl}/blog/${p.slug}/`),
+    ...getPublishedWorks().map((w) => `${baseUrl}/works/${w.slug}/`),
   ];
+
+  return urls.map((url) => ({ url, lastModified }));
 }
+
