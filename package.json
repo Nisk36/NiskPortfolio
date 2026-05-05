@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "prebuild": "node src/scripts/clean-contentlayer.mjs",
+    "build": "node src/scripts/require-site-url.mjs && next build",
     "preexport": "node src/scripts/generate-feed.mjs",
     "start": "next start",
     "lint": "next lint",
