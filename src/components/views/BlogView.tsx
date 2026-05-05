@@ -1,4 +1,4 @@
-import type { Post } from "contentlayer/generated";
+﻿import type { Post } from "contentlayer/generated";
 import BlogIndexClient from "../BlogIndexClient";
 import PageContainer from "../PageContainer";
 
@@ -12,7 +12,7 @@ const BlogView = ({ posts }: BlogViewProps) => (
       <div className="space-y-2">
         <h1 className="text-2xl font-semibold">Blog</h1>
         <p className="text-sm text-[var(--muted)]">
-          仕事や個人開発での備忘録やメモを書いていきます。
+          日々の学びや制作メモなどをまとめています。
         </p>
       </div>
       <BlogIndexClient posts={posts} />

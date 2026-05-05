@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import type { Post } from "contentlayer/generated";
 import PostCard from "@/components/PostCard";
